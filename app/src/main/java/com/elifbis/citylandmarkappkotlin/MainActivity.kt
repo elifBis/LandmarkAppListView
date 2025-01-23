@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.elifbis.citylandmarkappkotlin.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -30,9 +31,15 @@ class MainActivity : AppCompatActivity() {
         landmarkList.add(ulucami)
         landmarkList.add(kizkulesi)
 
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+
+        val landmarkAdapter = LandmarkAdapter(landmarkList)
+        binding.recyclerView.adapter = landmarkAdapter
+
         // adapter eklemek gerekiyor listview görüntüsü için
 
         //mapping .map
+        /*
 
         val adapter = ArrayAdapter(this,android.R.layout.simple_list_item_1, landmarkList.map{landmark -> landmark.name })
         binding.listView.adapter = adapter
@@ -41,7 +48,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(MainActivity@this, Details::class.java)
             intent.putExtra("landmark",landmarkList.get(position))
             startActivity(intent)
-        }
+        }*/
 
     }
 }
